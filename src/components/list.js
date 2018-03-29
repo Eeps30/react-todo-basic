@@ -1,9 +1,8 @@
 import React from 'react';
-import todoItems from '../data/todo_items'
 
 export default props => {
 
-    const listElements = todoItems.map((item, index) => {
+    const listElements = props.list.map((item, index) => {
         return <li key={index} className="collection-item">{item.title}</li>
     })
 
