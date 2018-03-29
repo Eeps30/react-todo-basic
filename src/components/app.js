@@ -16,11 +16,22 @@ class App extends Component {
         }
 
         this.addItem = this.addItem.bind(this)
+        this.deleteItem = this.deleteItem.bind(this)
     }
 
     addItem(item){
         this.setState({
             list: [...this.state.list, item]
+        })
+    }
+
+    deleteItem(index){
+        const newList = [...this.state.list];
+
+        newList.splice(index, 1);
+
+        this.setState({
+            list: newList
         })
     }
     
@@ -30,7 +41,7 @@ class App extends Component {
                 <div className="container">
                     <h1 className="center">To Do list</h1>
                     <AddForm add={this.addItem}/>
-                    <List list={this.state.list}/>
+                    <List delete={this.deleteItem} list={this.state.list}/>
                 </div>
             </div>
         )
